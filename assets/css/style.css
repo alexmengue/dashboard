@@ -65,6 +65,10 @@ body {
     position: relative;
 }
 
+#sidebar .side-menu li.active a {
+    color: var(--blue);
+}
+
 #sidebar .side-menu li.active::before {
     content: '';
     position: absolute;
@@ -100,6 +104,10 @@ body {
     color: var(--dark);
 }
 
+#sidebar .side-menu li a.logout {
+    color: var(--red);
+}
+
 #sidebar .side-menu.top li a:hover {
     color: var(--blue);
 }
@@ -108,4 +116,74 @@ body {
     min-width: calc(60px - ((4px + 6px) * 2));
     display: flex;
     justify-content: center;
+}
+
+#content {
+    position: relative;
+    width: calc(100% - 280px);
+    left: 280px;
+}
+
+#content nav {
+    height: 56px;
+    background: var(--light);
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    grid-gap: 24px;
+    font-family: var(--lato);
+}
+
+#content nav a {
+    color: var(--dark);
+}
+
+#content nav .bx.bx-menu {
+    cursor: pointer;
+}
+
+#content nav .nav-link {
+    font-size: 16px;
+    transition: .3s ease; 
+}
+
+#content nav .nav-link:hover {
+    color: var(--blue);
+}
+
+#content nav form {
+    max-width: 400px;
+    width: 100%;
+    margin-right: auto;
+}
+
+#content nav form .form-input {
+    display: flex;
+    align-items: center;
+    height: 36px;
+}
+
+#content nav form .form-input input {
+    flex-grow: 1;
+    padding: 0 16px;
+    height: 100%;
+    border: none;
+    background: var(--grey);
+    border-radius: 36px 0 0 36px;
+    outline: none;
+}
+
+#content nav form .form-input button {
+    width: 36px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--blue);
+    color: var(--light);
+    font-size: 18px;
+    border: none;
+    outline: none;
+    border-radius: 0 36px 36px 0;
+    cursor: pointer;
 }
