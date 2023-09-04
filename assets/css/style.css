@@ -30,6 +30,12 @@ body {
     background: var(--light);
     z-index: 1000;
     font-family: var(--lato);
+    transition: .3s ease;
+    overflow-x: hidden;
+}
+
+#sidebar.hide {
+    width: 60px;
 }
 
 #sidebar .brand {
@@ -65,10 +71,6 @@ body {
     position: relative;
 }
 
-#sidebar .side-menu li.active a {
-    color: var(--blue);
-}
-
 #sidebar .side-menu li.active::before {
     content: '';
     position: absolute;
@@ -102,6 +104,17 @@ body {
     border-radius: 48px;
     font-size: 16px;
     color: var(--dark);
+    white-space: nowrap;
+    overflow-x: hidden;
+}
+
+#sidebar.hide .side-menu li.active a {
+    color: var(--blue);
+}
+
+#sidebar.hide .side-menu li a {
+    width: calc(48px - (4px * 2));
+    transition: width .3s ease;
 }
 
 #sidebar .side-menu li a.logout {
@@ -122,6 +135,12 @@ body {
     position: relative;
     width: calc(100% - 280px);
     left: 280px;
+    transition: .3s ease;
+}
+
+#sidebar.hide ~ #content {
+    width: calc(100% - 60px);
+    left: 60px;
 }
 
 #content nav {
@@ -132,6 +151,18 @@ body {
     align-items: center;
     grid-gap: 24px;
     font-family: var(--lato);
+    position: relative;
+}
+
+#content nav::before {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    bottom: -40px;
+    left: 0;
+    border-radius: 50%;
+    box-shadow: -20px -20px 0 var(--light);
 }
 
 #content nav a {
@@ -186,4 +217,26 @@ body {
     outline: none;
     border-radius: 0 36px 36px 0;
     cursor: pointer;
+}
+
+#content nav .notification {
+    font-size: 20px;
+    position: relative;
+}
+
+#content nav .notification .num {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 2px solid var(--light);
+    background: var(--red);
+    color: var(--light);
+    font-weight: 700;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
