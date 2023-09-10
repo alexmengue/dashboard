@@ -17,8 +17,13 @@
     --light-orange: #FFE0D3;
 }
 
+html {
+    overflow-x: hidden;
+}
+
 body {
     background: var(--grey);
+    overflow-x: hidden;
 }
 
 #sidebar {
@@ -28,10 +33,14 @@ body {
     width: 280px;
     height: 100%;
     background: var(--light);
-    z-index: 1000;
+    z-index: 2000;
     font-family: var(--lato);
     transition: .3s ease;
     overflow-x: hidden;
+}
+
+#sidebar::--webkit-scrollbar {
+    display: none;
 }
 
 #sidebar.hide {
@@ -45,6 +54,13 @@ body {
     display: flex;
     align-items: center;
     color: var(--blue);
+    position: sticky;
+    top: 0;
+    left: 0;
+    background: var(--light);
+    z-index: 500;
+    padding-bottom: 20px;
+    box-sizing: content-box;
 }
 
 #sidebar .brand .bx {
@@ -108,7 +124,7 @@ body {
     overflow-x: hidden;
 }
 
-#sidebar.hide .side-menu li.active a {
+#sidebar .side-menu.top li.active a {
     color: var(--blue);
 }
 
@@ -151,7 +167,10 @@ body {
     align-items: center;
     grid-gap: 24px;
     font-family: var(--lato);
-    position: relative;
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 1000;
 }
 
 #content nav::before {
@@ -202,6 +221,7 @@ body {
     background: var(--grey);
     border-radius: 36px 0 0 36px;
     outline: none;
+    width: 100%;
 }
 
 #content nav form .form-input button {
@@ -252,6 +272,8 @@ body {
     max-width: 100%;
     padding: 36px 24px;
     font-family: var(--poppins);
+    max-height: calc(100vh - 56px);
+    overflow-y: auto;
 }
 
 #content main .head-title {
@@ -369,7 +391,6 @@ body {
     align-items: center;
     grid-gap: 16px;
     margin-bottom: 24px;
-    min-width: 420px;
 }
 
 #content main .table-data .head h3 {
@@ -390,7 +411,6 @@ body {
 #content main .table-data .order table {
     width: 100%;
     border-collapse: collapse;
-    min-width: 420px;
 }
 
 #content main .table-data .order table th {
@@ -427,6 +447,7 @@ body {
     padding: 6px 16px;
     color: var(--light);
     border-radius: 20px;
+    font-weight: 700;
 }
 
 #content main .table-data .order table tr td .status.completed {
@@ -434,11 +455,11 @@ body {
 }
 
 #content main .table-data .order table tr td .status.process {
-    
+    background: var(--yellow);
 }
 
 #content main .table-data .order table tr td .status.pending {
-    
+    background: var(--orange);
 }
 
 #content main .table-data .todo {
@@ -478,8 +499,13 @@ body {
 }
 
 @media screen and (max-width: 768px) {
+    #sidebar {
+        width: 200px;
+    }
+
     #content {
         width: calc(100% - 60px);
+        left: 200px;
     }
 
     #content nav .nav-link {
@@ -516,5 +542,21 @@ body {
     #content nav form.show ~ .notification,
     #content nav form.show ~ .profile {
         display: none;
+    }
+
+    #content main .box-info {
+        grid-template-columns: 1fr;
+    }
+
+    #content main .table-data .head {
+        min-width: 420px;
+    }
+
+    #content main .table-data .order table {
+        min-width: 420px;
+    }
+
+    #content main .table-data .todo .todo-list {
+        min-width: 420px;
     }
 }
